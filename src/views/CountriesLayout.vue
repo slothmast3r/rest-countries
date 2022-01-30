@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="filters-wrapper">
-      <search-bar class="search-bar" v-model="searchCountry" />
+      <search-bar class="search-bar" @input="inputSearch" :value="searchCountry" />
     </div>
     <div class="countries-wrapper">
       <country-card
@@ -23,7 +23,10 @@ import SearchBar from "@/components/SearchBar";
 
 export default {
   name: "CountriesLayout",
-  components: { CountryCard, SearchBar },
+  components: {
+    CountryCard,
+    SearchBar
+  },
   data() {
     return {
       countryRepositories: [],
@@ -33,7 +36,7 @@ export default {
   computed: {
     countriesFiltered() {
       return this.countryRepositories.filter((x) =>
-        x.name.includes(this.searchCountry)
+        x.name.toLowerCase().includes(this.searchCountry)
       );
     },
   },
@@ -44,6 +47,9 @@ export default {
     async getCountryRepositories() {
       this.countryRepositories = await fetchAllCountriesRepository();
     },
+    inputSearch(event){
+      this.searchCountry = event.target.value
+    }
   },
   // #TODO LEARN HOW TO SETUP
   // async setup() {

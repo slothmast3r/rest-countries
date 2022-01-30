@@ -4,8 +4,8 @@
     <input
       class="search-input"
       type="text"
-      @input="$emit('input', $event.target.value)"
-      v-model="search"
+      :value="value"
+      @input="$emit('input', $event)"
       placeholder="Search for a country..."
     />
   </div>
@@ -15,15 +15,15 @@
 export default {
   name: "SearchBar",
   props:{
-    value:{
-      type: String,
+    value: {
       required: true,
+      type: String,
     }
   },
-  data() {
+  data(){
     return {
-      search: "",
-    };
+      input: this.value,
+    }
   },
 };
 </script>
