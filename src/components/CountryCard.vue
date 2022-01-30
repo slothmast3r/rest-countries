@@ -1,12 +1,17 @@
 <template>
   <div class="card-wrapper" :class="$store.getters.darkModeState">
-    <img :src="country.flags.svg" class="flag-svg" :alt="'Flag: ' + country.name">
+    <img
+      :src="country.flags.svg"
+      class="flag-svg"
+      :alt="'Flag: ' + country.name"
+    />
     <div class="description__layout">
       <div class="title">
         {{ country.name }}
       </div>
       <div>
-        <span class="country-label"> Population: </span> {{ country.population }}
+        <span class="country-label"> Population: </span>
+        {{ country.population }}
       </div>
       <div>
         <span class="country-label"> Region: </span> {{ country.region }}
@@ -16,7 +21,6 @@
       </div>
     </div>
   </div>
-
 </template>
 
 <script>
@@ -25,14 +29,13 @@ export default {
   props: {
     country: {
       type: Object,
-      required: true
-    }
-  }
-}
+      required: true,
+    },
+  },
+};
 </script>
 
 <style scoped lang="scss">
-
 .card-wrapper {
   display: flex;
   flex-direction: column;
