@@ -47,8 +47,8 @@ Users should be able to:
 - Mobile-first workflow
 - Typescript
 - [Vue](https://vuejs.org/) - JS library
-- Vuex
-- VueRouter
+- [Vuex](https://vuex.vuejs.org/) - store
+- [Vue Router](https://router.vuejs.org/)
 
 
 ### What I learned
