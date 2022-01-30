@@ -22,7 +22,7 @@
         Dark Mode
       </div>
     </div>
-    <div class="body">
+    <div class="body" :class="$store.getters.darkModeState">
       <router-view></router-view>
     </div>
   </div>
@@ -37,9 +37,12 @@ body {
 #app {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 300;
+  height: 100vh;
 }
 
 .countries-wrapper {
+  position: relative;
+  height: 100%;
   transition: background-color 1s ease-in-out, color 1s ease-in-out;
   &.light {
     background-color: $veryLightGray-lightMode;
@@ -89,6 +92,17 @@ body {
 
   .body {
     padding: 3em 5em;
+    position: relative;
+
+    transition: background-color 1s ease-in-out, color 1s ease-in-out;
+    &.light {
+      background-color: $veryLightGray-lightMode;
+      color: black;
+    }
+    &.dark {
+      background-color: $veryDarkBlue-darkMode;
+      color: $white;
+    }
   }
 }
 </style>

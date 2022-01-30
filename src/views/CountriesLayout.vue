@@ -50,8 +50,8 @@ export default {
       return this.countryRepositories.filter(
         (x) =>
           x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
-          x.alpha2Code === this.searchCountry ||
-          x.alpha3Code === this.searchCountry
+          x.alpha2Code.toLowerCase() === this.searchCountry.toLowerCase() ||
+          x.alpha3Code.toLowerCase() === this.searchCountry.toLowerCase()
       );
     },
   },
