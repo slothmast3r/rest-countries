@@ -38,6 +38,7 @@ export default {
   border: 0.0625em solid white;
   box-sizing: border-box;
   width: 30em;
+  height: fit-content;
 
   outline: none;
   border-radius: 0.25em;
@@ -60,7 +61,7 @@ export default {
   }
   &.dark {
     color: white;
-    border: 0.0625em solid black;
+    border: 0.0625em solid $darkBlue-darkMode;
     box-shadow: 0 0 0.5em rgba(black, 0.3125);
     background-color: $darkBlue-darkMode;
     .search-input::placeholder {

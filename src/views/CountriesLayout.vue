@@ -6,6 +6,7 @@
         @input="inputSearch"
         :value="searchCountry"
       />
+      <dropdown :list="regions"></dropdown>
     </div>
     <transition-group
       tag="div"
@@ -32,10 +33,12 @@ import { fetchAllCountriesRepository } from "../../scripts/repositories";
 import CountryCard from "@/components/CountryCard";
 import SearchBar from "@/components/SearchBar";
 import Velocity from "velocity-animate";
+import Dropdown from "@/components/Dropdown";
 
 export default {
   name: "CountriesLayout",
   components: {
+    Dropdown,
     CountryCard,
     SearchBar,
   },
@@ -43,6 +46,13 @@ export default {
     return {
       countryRepositories: [],
       searchCountry: "",
+      regions: [
+        { name: "Oceania", key: "oceania", checked: false },
+        { name: "Africa", key: "africa", checked: false },
+        { name: "Europe", key: "europe", checked: false },
+        { name: "Asia", key: "asia", checked: false },
+        { name: "America", key: "americas", checked: false },
+      ],
     };
   },
   computed: {
@@ -52,8 +62,17 @@ export default {
           x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
           x.alpha2Code.toLowerCase() === this.searchCountry.toLowerCase() ||
           x.alpha3Code.toLowerCase() === this.searchCountry.toLowerCase()
-      );
+      ).filter((x)=> !this.regionsChecked.length || this.regionsChecked.includes(x.region.toLowerCase()));
     },
+    regionsChecked(){
+      let arr = []
+      for (const region of this.regions) {
+        if(region.checked){
+          arr.push(region.key)
+        }
+      }
+      return arr
+    }
   },
   async created() {
     await this.getCountryRepositories();
@@ -101,6 +120,8 @@ export default {
 <style scoped lang="scss">
 .filters-wrapper {
   margin-bottom: 3em;
+  display: flex;
+  justify-content: space-between;
 }
 
 .countries-wrapper {
