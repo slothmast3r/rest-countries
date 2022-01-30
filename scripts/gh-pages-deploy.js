@@ -1,4 +1,6 @@
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const execa = require("execa");
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require("fs");
 (async () => {
   try {
