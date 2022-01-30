@@ -66,6 +66,9 @@ export default {
     .search-input::placeholder {
       color: rgba(white, 0.7);
     }
+    .search-input {
+       color: white;
+     }
 
     &:focus-within {
       box-shadow: 0 0 0.5em rgba(black, 1);

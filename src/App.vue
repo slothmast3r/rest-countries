@@ -36,6 +36,7 @@ body {
 }
 #app {
   font-family: "Nunito Sans", sans-serif;
+  font-weight: 300;
 }
 
 .countries-wrapper {

@@ -6,13 +6,13 @@
         {{ country.name }}
       </div>
       <div>
-        Population {{ country.population }}
+        <span class="country-label"> Population: </span> {{ country.population }}
       </div>
       <div>
-        Region {{ country.region }}
+        <span class="country-label"> Region: </span> {{ country.region }}
       </div>
       <div>
-        Capital {{ country.capital }}
+        <span class="country-label"> Capital: </span> {{ country.capital }}
       </div>
     </div>
   </div>
@@ -63,6 +63,9 @@ export default {
     .title {
       font-size: 1.2em;
       font-weight: 800;
+    }
+    .country-label {
+      font-weight: 600;
     }
   }
 }
