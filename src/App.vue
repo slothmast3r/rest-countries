@@ -1,18 +1,31 @@
 <template>
-  <div class="countries-wrapper">
-    <div class="header">
+  <div
+    class="countries-wrapper"
+    :class="$store.getters.darkModeState"
+  >
+    <div class="header" :class="$store.getters.darkModeState">
       <div class="header-title">Where in the world?</div>
 
       <div
         @click="$store.commit('changeDarkModeState')"
         class="dark-mode-button"
       >
-        <img v-if="!$store.state.darkMode" class="moon-image" alt="moon" src="@/assets/moon-6679.svg">
-        <img v-else class="moon-image" alt="moon" src="@/assets/dark-mode-6682.svg">
+        <img
+          v-if="!$store.state.darkMode"
+          class="moon-image"
+          alt="moon"
+          src="@/assets/moon-6679.svg"
+        />
+        <img
+          v-else
+          class="moon-image"
+          alt="moon"
+          src="@/assets/dark-mode-6682.svg"
+        />
         Dark Mode
       </div>
     </div>
-    <div class="body" :class="$store.state.darkMode ? 'dark' : 'light'">
+    <div class="body">
       <router-view></router-view>
     </div>
   </div>
@@ -27,30 +40,43 @@ body {
 #app {
   font-family: "Nunito Sans", sans-serif;
 }
-.header {
-  box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
-  z-index: 2;
-  position: relative;
-  display: flex;
-  justify-content: space-between;
-  padding: 1.5em 4.5em;
-  .header-title {
-    font-size: 1.5em;
-    font-weight: 800;
+.countries-wrapper {
+  &.light {
+    background: $veryLightGray-lightMode;
+    color: black;
   }
-  .dark-mode-button {
-    cursor: pointer;
-    user-select: none;
+  &.dark {
+    background: $veryDarkBlue-darkMode;
+    color: $white;
+  }
+  .header {
+    box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
+    z-index: 2;
+    position: relative;
     display: flex;
-    align-items: center;
-    gap: 0.5em;
-    .moon-image{
-      width: 1em;
+    justify-content: space-between;
+    padding: 1.5em 4.5em;
+
+    .header-title {
+      font-size: 1.5em;
+      font-weight: 800;
+    }
+
+    .dark-mode-button {
+      cursor: pointer;
+      user-select: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5em;
+
+      .moon-image {
+        width: 1em;
+      }
     }
   }
-}
-.body {
-  padding: 3em 5em;
-  background: $veryLightGray-lightMode;
+
+  .body {
+    padding: 3em 5em;
+  }
 }
 </style>

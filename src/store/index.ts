@@ -9,6 +9,11 @@ export default createStore({
       state.darkMode = !state.darkMode;
     },
   },
+  getters: {
+    darkModeState(state) {
+      return state.darkMode ? "dark" : "light";
+    },
+  },
   actions: {},
   modules: {},
 });
