@@ -47,16 +47,16 @@ export default {
   },
   computed: {
     countriesFiltered() {
-      return this.countryRepositories.filter((x) =>
-        x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
-        x.alpha2Code === this.searchCountry ||
-        x.alpha3Code === this.searchCountry
+      return this.countryRepositories.filter(
+        (x) =>
+          x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
+          x.alpha2Code === this.searchCountry ||
+          x.alpha3Code === this.searchCountry
       );
     },
   },
   async created() {
     await this.getCountryRepositories();
-    console.log(this.countryRepositories)
   },
   methods: {
     async getCountryRepositories() {
