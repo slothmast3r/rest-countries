@@ -1,8 +1,8 @@
 <template>
-  <div className="card-wrapper">
+  <div class="card-wrapper" :class="$store.getters.darkModeState">
     <img :src="country.flags.svg" class="flag-svg" :alt="'Flag: ' + country.name">
-    <div className="description__layout">
-      <div className="title">
+    <div class="description__layout">
+      <div class="title">
         {{ country.name }}
       </div>
       <div>
@@ -37,10 +37,20 @@ export default {
   display: flex;
   flex-direction: column;
   border-radius: 0.5em;
-  background: $white;
 
   width: 19em;
-  box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
+  transition: background-color 1s ease-in-out, color 1s ease-in-out,
+    box-shadow 1s ease-in-out;
+  &.light {
+    color: black;
+    box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
+    background-color: $white;
+  }
+  &.dark {
+    color: white;
+    box-shadow: 0.4em 0.4em 0.4em rgba(black, 0.125);
+    background-color: $darkBlue-darkMode;
+  }
 
   .flag-svg {
     height: 10em;

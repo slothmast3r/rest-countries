@@ -1,8 +1,5 @@
 <template>
-  <div
-    class="countries-wrapper"
-    :class="$store.getters.darkModeState"
-  >
+  <div class="countries-wrapper" :class="$store.getters.darkModeState">
     <div class="header" :class="$store.getters.darkModeState">
       <div class="header-title">Where in the world?</div>
 
@@ -40,22 +37,36 @@ body {
 #app {
   font-family: "Nunito Sans", sans-serif;
 }
+
 .countries-wrapper {
+  transition: background-color 1s ease-in-out, color 1s ease-in-out;
   &.light {
-    background: $veryLightGray-lightMode;
+    background-color: $veryLightGray-lightMode;
     color: black;
   }
   &.dark {
-    background: $veryDarkBlue-darkMode;
+    background-color: $veryDarkBlue-darkMode;
     color: $white;
   }
   .header {
-    box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
     z-index: 2;
     position: relative;
     display: flex;
     justify-content: space-between;
     padding: 1.5em 4.5em;
+    transition: background-color 1s ease-in-out, color 1s ease-in-out,
+      box-shadow 1s ease-in-out;
+
+    &.light {
+      background-color: $white;
+      box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
+      color: black;
+    }
+    &.dark {
+      box-shadow: 0.4em 0.4em 0.4em rgba(black, 0.125);
+      background-color: $darkBlue-darkMode;
+      color: $white;
+    }
 
     .header-title {
       font-size: 1.5em;
