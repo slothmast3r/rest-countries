@@ -51,6 +51,9 @@ export default {
         x.name.toLowerCase().includes(this.searchCountry.toLowerCase())
       );
     },
+    darkMode(){
+      return this.$store.state.darkMode
+    },
   },
   async created() {
     await this.getCountryRepositories();

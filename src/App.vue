@@ -2,8 +2,17 @@
   <div class="countries-wrapper">
     <div class="header">
       <div class="header-title">Where in the world?</div>
+
+      <div
+        @click="$store.commit('changeDarkModeState')"
+        class="dark-mode-button"
+      >
+        <img v-if="!$store.state.darkMode" class="moon-image" alt="moon" src="@/assets/moon-6679.svg">
+        <img v-else class="moon-image" alt="moon" src="@/assets/dark-mode-6682.svg">
+        Dark Mode
+      </div>
     </div>
-    <div class="body" :class="false ? 'dark' : 'light'">
+    <div class="body" :class="$store.state.darkMode ? 'dark' : 'light'">
       <router-view></router-view>
     </div>
   </div>
@@ -13,6 +22,7 @@
 body {
   padding: 0;
   margin: 0;
+  transition: background-color 1s ease-in-out;
 }
 #app {
   font-family: "Nunito Sans", sans-serif;
@@ -21,10 +31,22 @@ body {
   box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
   z-index: 2;
   position: relative;
+  display: flex;
+  justify-content: space-between;
+  padding: 1.5em 4.5em;
   .header-title {
-    padding: 1em 3em;
+    font-size: 1.5em;
     font-weight: 800;
-    font-size: 1.5rem;
+  }
+  .dark-mode-button {
+    cursor: pointer;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5em;
+    .moon-image{
+      width: 1em;
+    }
   }
 }
 .body {
