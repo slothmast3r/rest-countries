@@ -30,7 +30,6 @@ export default {
     };
   },
   async created() {
-    console.log(this.$store.state.darkMode);
     await this.getCountryRepositories();
   },
   methods: {
