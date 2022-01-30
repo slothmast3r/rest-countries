@@ -1,30 +1,34 @@
 <template>
-  <div id="nav">
-    <router-link to="/">Home</router-link> |
-    <router-link to="/about">About</router-link>
+  <div class="countries-wrapper">
+    <div class="header">
+      <div class="header-title">Where in the world?</div>
+    </div>
+    <div class="body" :class="false ? 'dark' : 'light'">
+      <router-view></router-view>
+    </div>
   </div>
-  <router-view />
 </template>
 
 <style lang="scss">
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
+body {
+  padding: 0;
+  margin: 0;
 }
-
-#nav {
-  padding: 30px;
-
-  a {
-    font-weight: bold;
-    color: #2c3e50;
-
-    &.router-link-exact-active {
-      color: #42b983;
-    }
+#app {
+  font-family: "Nunito Sans", sans-serif;
+}
+.header {
+  box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
+  z-index: 2;
+  position: relative;
+  .header-title {
+    padding: 1em 3em;
+    font-weight: 800;
+    font-size: 1.5rem;
   }
+}
+.body {
+  padding: 3em 5em;
+  background: $veryLightGray-lightMode;
 }
 </style>
