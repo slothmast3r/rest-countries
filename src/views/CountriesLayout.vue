@@ -1,11 +1,11 @@
 <template>
   <div>
     <div class="filters-wrapper">
-      <search-bar class="search-bar" />
+      <search-bar class="search-bar" v-model="searchCountry" />
     </div>
     <div class="countries-wrapper">
       <country-card
-        v-for="country in countryRepositories"
+        v-for="country in countriesFiltered"
         :country="country"
         :key="country.numericCode"
       >
@@ -27,7 +27,15 @@ export default {
   data() {
     return {
       countryRepositories: [],
+      searchCountry: "",
     };
+  },
+  computed: {
+    countriesFiltered() {
+      return this.countryRepositories.filter((x) =>
+        x.name.includes(this.searchCountry)
+      );
+    },
   },
   async created() {
     await this.getCountryRepositories();
@@ -55,7 +63,6 @@ export default {
 </script>
 
 <style scoped lang="scss">
-
 .filters-wrapper {
   margin-bottom: 3em;
 }
