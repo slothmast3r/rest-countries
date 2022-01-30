@@ -36,7 +36,7 @@ export default {
   computed: {
     countriesFiltered() {
       return this.countryRepositories.filter((x) =>
-        x.name.toLowerCase().includes(this.searchCountry)
+        x.name.toLowerCase().includes(this.searchCountry.toLowerCase())
       );
     },
   },
