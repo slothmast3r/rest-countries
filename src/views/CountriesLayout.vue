@@ -19,6 +19,7 @@
       <country-card
         v-for="(country, index) in countriesFiltered"
         :key="country.numericCode"
+        @click="$router.push('/'+country.alpha2Code)"
         :country="country"
         v-bind:data-index="index"
       />
@@ -27,9 +28,6 @@
 </template>
 
 <script>
-// import {onMounted, ref, watch} from "vue";
-// import { setup } from 'vue-class-component'
-import { fetchAllCountriesRepository } from "../../scripts/repositories";
 import CountryCard from "@/components/CountryCard";
 import SearchBar from "@/components/SearchBar";
 import Velocity from "velocity-animate";
