@@ -44,7 +44,7 @@ export default {
   },
   data() {
     return {
-      countryRepositories: [],
+      // countryRepositories: [],
       searchCountry: "",
       regions: [
         { name: "Oceania", key: "oceania", checked: false },
@@ -79,13 +79,18 @@ export default {
       }
       return arr;
     },
+    countryRepositories(){
+      return this.$store.state.countryRepositories
+    }
   },
   async created() {
     await this.getCountryRepositories();
+
+    await this.$store.dispatch("fetchCountriesApi");
   },
   methods: {
     async getCountryRepositories() {
-      this.countryRepositories = await fetchAllCountriesRepository();
+      // this.countryRepositories = await fetchAllCountriesRepository();
     },
     inputSearch(event) {
       this.searchCountry = event.target.value;
