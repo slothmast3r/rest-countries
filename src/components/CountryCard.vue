@@ -42,8 +42,15 @@ export default {
   border-radius: 0.5em;
 
   width: 19em;
+  position: relative;
+  top: 0;
+  cursor: pointer;
   transition: background-color 1s ease-in-out, color 1s ease-in-out,
-    box-shadow 1s ease-in-out;
+    top 0.3s ease-in-out, box-shadow 1s ease-in-out;
+  &:hover {
+    top: -1.5em;
+    transition: top 0.6s ease-in-out;
+  }
   &.light {
     color: black;
     box-shadow: 0.4em 0.4em 0.4em rgba($darkgray-lightMode, 0.125);
