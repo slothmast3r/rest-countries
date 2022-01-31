@@ -57,22 +57,28 @@ export default {
   },
   computed: {
     countriesFiltered() {
-      return this.countryRepositories.filter(
-        (x) =>
-          x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
-          x.alpha2Code.toLowerCase() === this.searchCountry.toLowerCase() ||
-          x.alpha3Code.toLowerCase() === this.searchCountry.toLowerCase()
-      ).filter((x)=> !this.regionsChecked.length || this.regionsChecked.includes(x.region.toLowerCase()));
+      return this.countryRepositories
+        .filter(
+          (x) =>
+            x.name.toLowerCase().includes(this.searchCountry.toLowerCase()) ||
+            x.alpha2Code.toLowerCase() === this.searchCountry.toLowerCase() ||
+            x.alpha3Code.toLowerCase() === this.searchCountry.toLowerCase()
+        )
+        .filter(
+          (x) =>
+            !this.regionsChecked.length ||
+            this.regionsChecked.includes(x.region.toLowerCase())
+        );
     },
-    regionsChecked(){
-      let arr = []
+    regionsChecked() {
+      let arr = [];
       for (const region of this.regions) {
-        if(region.checked){
-          arr.push(region.key)
+        if (region.checked) {
+          arr.push(region.key);
         }
       }
-      return arr
-    }
+      return arr;
+    },
   },
   async created() {
     await this.getCountryRepositories();
@@ -122,6 +128,9 @@ export default {
   margin-bottom: 3em;
   display: flex;
   justify-content: space-between;
+  @media screen and (max-width: 750px) {
+    flex-wrap: wrap;
+  }
 }
 
 .countries-wrapper {
