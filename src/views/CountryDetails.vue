@@ -42,11 +42,8 @@
             :value-array="country.languages"
           />
           <div>
-            <div class="buttons-wrapper">
-
-            <span class="label">
-            Borders:
-            </span>
+            <div class="buttons-wrapper" v-if="country.borders">
+              <span class="label"> Borders: </span>
               <div
                 :class="$store.getters.darkModeState"
                 class="button"
@@ -79,12 +76,19 @@ export default {
       countryCode: this.$route.params.countryCode,
     };
   },
+  watch: {
+    '$route': async function (to, from) {
+      this.countryCode = to.params.countryCode;
+      await this.getCountry();
+    },
+  },
   async created() {
     await this.getCountry();
     if (this.$store.state.countryRepositories.length === 0) {
       await this.$store.dispatch("fetchCountriesApi");
     }
   },
+
   methods: {
     getCountry: async function () {
       let country = this.$store.getters.getCountryByAlfaCode(this.countryCode);
@@ -134,7 +138,7 @@ export default {
     gap: 0.5em;
     flex-wrap: wrap;
   }
-  .label{
+  .label {
     font-weight: 800;
   }
 }

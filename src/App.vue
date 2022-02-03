@@ -23,9 +23,7 @@
       </div>
     </div>
     <div class="body" :class="$store.getters.darkModeState">
-      <transition name="slide" mode="out-in">
-        <router-view></router-view>
-      </transition>
+      <router-view></router-view>
     </div>
   </div>
 </template>
