@@ -31,7 +31,7 @@ export default {
       if (this.value) {
         return this.value;
       }
-      if (this.valueArray.length) {
+      if (this.valueArray) {
         let res = "";
         if(this.isArrayOfObject) {
           for (let i = 0; i < this.valueArray.length; i++) {

@@ -84,7 +84,7 @@ export default {
   },
   async created() {
     await this.getCountry();
-    if (this.$store.state.countryRepositories.length === 0) {
+    if (!this.$store.state.countryRepositories) {
       await this.$store.dispatch("fetchCountriesApi");
     }
   },
