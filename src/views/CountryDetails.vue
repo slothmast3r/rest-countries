@@ -22,39 +22,41 @@
         </div>
         <div class="details_text--text">
           <details-line label-name="Native name" :value="country.nativeName" />
-          <details-line label-name="Population" :value="country.population" />
-          <details-line label-name="Region" :value="country.region" />
-          <details-line label-name="Sub region" :value="country.subregion" />
-          <details-line label-name="Native name" :value="country.nativeName" />
-          <details-line label-name="Capital" :value="country.nativeName" />
           <details-line
             label-name="Top Level domain"
             :value-array="country.topLevelDomain"
           />
+          <details-line label-name="Population" :value="country.population" />
           <details-line
+            v-if="country.currencies"
             label-name="Currencies"
             is-array-of-object
             :value-array="country.currencies"
           />
+          <details-line label-name="Region" :value="country.region" />
+          <details-line label-name="Sub region" :value="country.subregion" />
           <details-line
+            v-if="country.languages"
             label-name="Languages"
             is-array-of-object
             :value-array="country.languages"
           />
-          <div>
-            <div class="buttons-wrapper" v-if="country.borders">
-              <span class="label"> Borders: </span>
-              <div
-                :class="$store.getters.darkModeState"
-                class="button"
-                v-for="(countryBorder, index) in country.borders"
-                :key="index + 'border'"
-                @click="$router.push('/' + countryBorder)"
-              >
-                {{
-                  this.$store.getters.getCountryByAlfaCode(countryBorder).name
-                }}
-              </div>
+          <details-line label-name="Native name" :value="country.nativeName" />
+          <details-line label-name="Capital" :value="country.nativeName" />
+        </div>
+        <div>
+          <div class="buttons-wrapper" v-if="country.borders">
+            <span class="label"> Borders: </span>
+            <div
+              :class="$store.getters.darkModeState"
+              class="button"
+              v-for="(countryBorder, index) in country.borders"
+              :key="index + 'border'"
+              @click="$router.push('/' + countryBorder)"
+            >
+              {{
+                this.$store.getters.getCountryByAlfaCode(countryBorder).name
+              }}
             </div>
           </div>
         </div>
@@ -137,9 +139,22 @@ export default {
     display: flex;
     gap: 0.5em;
     flex-wrap: wrap;
+    margin-top: 2em;
   }
   .label {
     font-weight: 800;
+  }
+  .details_text--layout{
+    padding: 3em 7em;
+    .details_text--header{
+      font-size: 1.6em;
+      font-weight: 800;
+      margin-bottom: 1em;
+    }
+    .details_text--text{
+      display: grid;
+      grid-template-columns: auto auto;
+    }
   }
 }
 </style>

@@ -1,9 +1,9 @@
 <template>
   <div class="details-wrapper">
-    <div class="label">{{ labelName }}:</div>
-    <div class="details--text">
+    <span class="label">{{ labelName }}:</span>
+    <span class="details--text">
       {{ text }}
-    </div>
+    </span>
   </div>
 </template>
 
@@ -53,7 +53,8 @@ export default {
 
 <style scoped lang="scss">
 .details-wrapper {
-  display: flex;
+  margin: 0.6em 0;
+  width: 15em;
 }
 .label {
   font-weight: 800;
