@@ -19,7 +19,7 @@
       <country-card
         v-for="(country, index) in countriesFiltered"
         :key="country.numericCode"
-        @click="$router.push('/'+country.alpha2Code)"
+        @click="$router.push('/'+country.alpha3Code)"
         :country="country"
         v-bind:data-index="index"
       />

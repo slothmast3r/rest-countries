@@ -18,6 +18,9 @@ export default createStore({
     darkModeState(state) {
       return state.darkMode ? "dark" : "light";
     },
+    getCountryByAlfaCode: (state) => (code: string) => {
+      return state.countryRepositories.find((todo: any) => todo.alpha3Code === code);
+    },
   },
   actions: {
     async fetchCountriesApi(context) {
