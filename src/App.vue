@@ -1,7 +1,7 @@
 <template>
   <div class="countries-wrapper" :class="$store.getters.darkModeState">
     <div class="header" :class="$store.getters.darkModeState">
-      <div class="header-title">Where in the world?</div>
+      <div class="header-title" @click="$router.push('/')">Where in the world?</div>
 
       <div
         @click="$store.commit('changeDarkModeState')"
